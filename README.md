@@ -1,5 +1,8 @@
 # CI/CD pipeline project for deploying Cafe App to a Kubernetes cluster using Jenkins
 
+![image](https://github.com/user-attachments/assets/c61a7524-5496-4689-9bcc-0d6484f76832)
+
+
 Here's some of the key steps for this project for deploying simple cafe app to a Kubernetes cluster using Jenkins:
 
 ### CI Job (Continuous Integration)
