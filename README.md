@@ -41,3 +41,5 @@ Create Jenkins CD Job:
 
 After this setup CI Job is automatically triggered by changes in the GitHub repository, builds and pushes a Docker image. CD Job triggered after the CI job completes, pulls the image from Docker Hub, and deploys it to the Kubernetes cluster.
 
+
+Thanks https://www.youtube.com/watch?v=DcxhGcWgVUo&list=PLmSlOWkfkugnSv2TCC
