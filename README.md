@@ -1,8 +1,8 @@
-## CI/CD pipeline project for deploying Cafe App to a Kubernetes cluster using Jenkins
+# CI/CD pipeline project for deploying Cafe App to a Kubernetes cluster using Jenkins
 
 Here's some of the key steps for this project for deploying simple cafe app to a Kubernetes cluster using Jenkins:
 
-# CI Job (Continuous Integration)
+### CI Job (Continuous Integration)
 Set Up Jenkins:
 
 Create a virtual machine (VM) on Azure to host Jenkins.
