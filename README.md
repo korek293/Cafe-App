@@ -5,48 +5,39 @@
 
 Here's some of the key steps for this project for deploying simple cafe app to a Kubernetes cluster using Jenkins:
 
-### CI Job (Continuous Integration)
-Set Up Jenkins:
+### Continuous Integration
+Setting Up Jenkins:
+  Creating a virtual machine (VM) on Azure to host Jenkins.
+  Installing Java Development Kit (JDK) and Jenkins on the VM.
+  Configuring Jenkins to run on port 8080.
 
-Create a virtual machine (VM) on Azure to host Jenkins.
-Install Java Development Kit (JDK) and Jenkins on the VM.
-Configure Jenkins to run on port 8080.
-Integrate Ansible with Jenkins:
+Integrating Ansible with Jenkins:
+  Setting up a separate VM on Azure for Ansible.
+  Installing Ansible and Docker on the Ansible VM.
+  Creating an SSH key for passwordless authentication between Jenkins and the Ansible server.
+  Installing the SSH plugin in Jenkins and configure it to communicate with the Ansible server.
 
-Set up a separate VM on Azure for Ansible.
-Install Ansible and Docker on the Ansible VM.
-Create an SSH key for passwordless authentication between Jenkins and the Ansible server.
-Install the SSH plugin in Jenkins and configure it to communicate with the Ansible server.
-Create Jenkins CI Job:
+Creating Jenkins CI Job:
+  In Jenkins, creating a new Freestyle project named CI job cafe app.
+  Configuring the job to pull code from a GitHub repository.
+  Adding a post-build action to trigger an Ansible Playbook
 
-In Jenkins, create a new Freestyle project named CI job cafe app.
-Configure the job to pull code from a GitHub repository.
-Add a post-build action to trigger an Ansible Playbook that:
-Clones the repository from GitHub.
-Builds a Docker image from the code.
-Tags and pushes the Docker image to Docker Hub.
-CD Job (Continuous Deployment)
-Set Up Kubernetes Cluster:
+### Continuous Deployment
+Setting Up Kubernetes Cluster:
+  Installing Azure CLI on the VM.
+  Using Azure CLI to create a Kubernetes cluster with two nodes.
+  Connecting to Kubernetes Cluster:
 
-Create a new VM to manage the Kubernetes cluster.
-Install Azure CLI on the VM.
-Use Azure CLI to create a Kubernetes cluster with two nodes.
-Connect to Kubernetes Cluster:
+Creating Kubernetes Deployment and Service:
+  Writing a deployment manifest file to deploy the application.
+  The deployment pulls the Docker image from Docker Hub and runs it in the Kubernetes cluster.
+  Writing a service manifest file to expose the deployment.
 
-Log in to Azure from the VM using Azure CLI.
-Install Kubernetes CLI (kubectl) and connect to the Kubernetes cluster.
-Create Kubernetes Deployment and Service:
-
-Write a deployment manifest file (Cafe app-deployment.yml) to deploy the application.
-The deployment pulls the Docker image from Docker Hub and runs it in the Kubernetes cluster.
-Write a service manifest file (Cafe app-service.yml) to expose the deployment.
 Create Jenkins CD Job:
+  In Jenkins, creating a new job that triggers the deployment process.
+  The job runs the Ansible Playbook to:
+  Pulling the Docker image from Docker Hub.
+  Deploying the image on the Kubernetes cluster using the deployment and service manifest files.
 
-In Jenkins, create a new job that triggers the deployment process.
-The job runs the Ansible Playbook to:
-Pull the Docker image from Docker Hub.
-Deploy the image on the Kubernetes cluster using the deployment and service manifest files.
-Summary of the Pipeline Flow:
-CI Job: Automatically triggered by changes in the GitHub repository, builds and pushes a Docker image.
-CD Job: Triggered after the CI job completes, pulls the image from Docker Hub, and deploys it to the Kubernetes cluster.
-This pipeline ensures that any code changes in the repository are automatically built, tested, and deployed to the Kubernetes cluster, following a fully automated CI/CD process.
+After this setup CI Job is automatically triggered by changes in the GitHub repository, builds and pushes a Docker image. CD Job triggered after the CI job completes, pulls the image from Docker Hub, and deploys it to the Kubernetes cluster.
+
