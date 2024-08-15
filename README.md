@@ -1,7 +1,6 @@
 # CI/CD pipeline project for deploying Cafe App to a Kubernetes cluster using Jenkins
 
-![image](https://github.com/user-attachments/assets/c61a7524-5496-4689-9bcc-0d6484f76832)
-
+![image](https://github.com/user-attachments/assets/026c9ffe-1ed9-477d-a370-54cb0b3d1e12)
 
 Here's some of the key steps for this project for deploying simple cafe app to a Kubernetes cluster using Jenkins:
 
@@ -38,6 +37,8 @@ Create Jenkins CD Job:
   The job runs the Ansible Playbook to:
   Pulling the Docker image from Docker Hub.
   Deploying the image on the Kubernetes cluster using the deployment and service manifest files.
+
+![image](https://github.com/user-attachments/assets/c61a7524-5496-4689-9bcc-0d6484f76832)
 
 After this setup CI Job is automatically triggered by changes in the GitHub repository, builds and pushes a Docker image. CD Job triggered after the CI job completes, pulls the image from Docker Hub, and deploys it to the Kubernetes cluster.
 
